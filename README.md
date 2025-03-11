@@ -1,4 +1,9 @@
-# BackupFiles v1.0
+# com.coffee.BackupFiles v1.0
+## 首先
+执行
+```shell
+mvn clean install -DskipTests=true
+```
 ## 如何使用？
 方式一：将jar包放置在你要备份的文件夹里，使用命令`java -jar Backup.jar` 后会自动备份当前文件夹及子文件夹下所有到默认的位置（默认备份到E:\学习\note目录下，当然你可以修改Main.java的toPath变量然后生成jar）；
 方式二：使用命令`java -jar Backup.jar E:\学习\note` 指定要备份到哪个文件夹；

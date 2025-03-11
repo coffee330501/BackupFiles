@@ -1,3 +1,5 @@
+package com.coffee;
+
 //日志类
 public class Logger {
     private static final String MESSAGE = "MESSAGE: ";

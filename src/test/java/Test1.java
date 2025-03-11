@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Test1 {
     @Test
     public void test(){
-        //输出当前项目路径 D:\WorkSpace\WorkSpace\TissueBank-New-ZSFE\CopyFiles
+        //输出当前项目路径
         System.out.println(System.getProperty("user.dir"));
     }
     @Test
@@ -20,6 +20,10 @@ public class Test1 {
     public void test3(){
         File file=new File("C:\\Users\\coffee\\Desktop\\ㅤ\\note");
         File[] files = file.listFiles();
+        if (files == null) {
+            System.out.println("文件不存在");
+            return;
+        }
         for (File f : files) {
             System.out.println(f.getName());
         }
