@@ -2,8 +2,9 @@ import java.util.concurrent.*;
 
 public class MyThreadPool {
     private ThreadPoolExecutor executor;
-    private static class Singleton{
-        private static final MyThreadPool pool=new MyThreadPool();
+
+    private static class Singleton {
+        private static final MyThreadPool pool = new MyThreadPool();
     }
 
 
@@ -11,8 +12,8 @@ public class MyThreadPool {
         // I/O密集型应用
 //        int corePoolSize = Runtime.getRuntime().availableProcessors();
 //        int maximumPoolSize = corePoolSize * 2 + 1;
-        int corePoolSize = Runtime.getRuntime().availableProcessors()*2;
-        int maximumPoolSize = corePoolSize  + 1;
+        int corePoolSize = Runtime.getRuntime().availableProcessors() * 2;
+        int maximumPoolSize = corePoolSize + 1;
         long keepAliveTime = 10;
         TimeUnit unit = TimeUnit.SECONDS;
         /*
@@ -23,15 +24,18 @@ public class MyThreadPool {
         BlockingQueue<Runnable> workQueue = new LinkedBlockingDeque<Runnable>(256);
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
         RejectedExecutionHandler rejectedPolicy = new ThreadPoolExecutor.CallerRunsPolicy();
-        this.executor=new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory,rejectedPolicy);
+        this.executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, rejectedPolicy);
     }
-    public static MyThreadPool getThreadPool(){
+
+    public static MyThreadPool getThreadPool() {
         return Singleton.pool;
     }
-    public void execute(Runnable task){
+
+    public void execute(Runnable task) {
         executor.execute(task);
     }
-    public void stop(){
+
+    public void stop() {
         executor.shutdown();
     }
 }
